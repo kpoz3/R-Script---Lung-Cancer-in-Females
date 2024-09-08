@@ -1,5 +1,10 @@
 # R-Script---Lung-Cancer-in-Females
+
+
 > names(liver_cancer_data)
+
+
+
   [1] "CONDITION"                          "OUTCOME"                           
   [3] "Year"                               "Geography"                         
   [5] "GeoType"                            "GeoName"                           
@@ -139,9 +144,16 @@
 [273] "Other_notAIAN_Age45_64_Female"      "Other_notAIAN_Age45_64_FemaleRate" 
 [275] "Other_notAIAN_Age45Plus_Female"     "Other_notAIAN_Age45Plus_FemaleRate"
 [277] "Other_notAIAN_Age65Plus_Female"     "Other_notAIAN_Age65Plus_FemaleRate"
+
+
 > max_geography <- aggregate(liver_cancer_data[, c("Total_MaleRate","Total_FemaleRate")], by=list(Geography = liver_cancer_data$Geography), FUN=max, na.rm=TRUE)
 There were 50 or more warnings (use warnings() to see the first 50)
 > print(max_geography)
+
+
+
+
+
                   Geography Total_MaleRate Total_FemaleRate
 1                    Alpine           -Inf             -Inf
 2      Anza-Borrego Springs           -Inf             -Inf
@@ -216,6 +228,10 @@ There were 50 or more warnings (use warnings() to see the first 50)
 71               University          14.68             -Inf
 72            Valley Center          43.22             -Inf
 73                    Vista          15.65             -Inf
+
+
+
+
 
 > ggplot(max_geography, aes(max_geography$Geography,max_geography$Total_FemaleRate)) + geom_bar(stat="identity") +
 +     ggtitle("Geography of Liver Cancer in Females")+
